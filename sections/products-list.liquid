@@ -1,6 +1,11 @@
-{% comment %}{% Task1 %}{% endcomment %}
 {% assign collection = collections['Featured-Products'] %}
 <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 20px 50px">
+
+    {% if collection.products.size > 10 %}
+    <h1 style="width: 100%"> We have an amazing selection of featured products!</h1>
+    {% else %}
+    <h1 style="width: 100%">Check out our exclusive featured products!</h1>
+    {% endif %}
 
     {% for product in collection.products -%}
 
