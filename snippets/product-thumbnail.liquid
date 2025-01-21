@@ -77,6 +77,9 @@
       {% endcase %}
     </span>
     {%- render 'loading-spinner' -%}
+    {% if product.compare_at_price> product.price %}
+      <div style="position: absolute; right: 0; top: 0; z-index: 10; padding: 10px 15px; display: inline; background-color: #516ea1; border-radius: 10px; margin: 10px; color: white; font-weight: bold" >  {{ "Sale is on" }} </div>
+    {% endif %}
     <div class="product__media media media--transparent">
       {{
         media.preview_image
