@@ -1,11 +1,14 @@
 {% assign collection = collections['Featured-Products'] %}
+
+{% assign welcome_message = "Welcome to our store! We’re glad you’re here." %}
+<h1>{{ welcome_message }}</h1>
 <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 20px 50px">
 
-    {% if collection.products.size > 10 %}
-    <h1 style="width: 100%"> We have an amazing selection of featured products!</h1>
-    {% else %}
-    <h1 style="width: 100%">Check out our exclusive featured products!</h1>
-    {% endif %}
+    {% comment %}{% if collection.products.size > 10 %}{% endcomment %}
+    {% comment %}<h1 style="width: 100%"> We have an amazing selection of featured products!</h1>{% endcomment %}
+    {% comment %}{% else %}{% endcomment %}
+    {% comment %}<h1 style="width: 100%">Check out our exclusive featured products!</h1>{% endcomment %}
+    {% comment %}{% endif %}{% endcomment %}
 
     {% for product in collection.products -%}
 
@@ -19,3 +22,11 @@
         </a>
     {% endfor %}
 </div>
+
+{% assign testimonials = "Great service!,Loved the products!,Fast delivery!" | split: "," %}
+<h2>What Our Customers Say:</h2>
+<ul>
+{% for testimonial in testimonials %}
+<li>{{ testimonial }}</li>
+{% endfor %}
+</ul>
