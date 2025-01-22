@@ -114,6 +114,7 @@
                     price_class: 'price--large'
                   -%}
                     <span>Product tags: {{ product.tags | join: ", " }}</span>
+                    <span>Published On : {{ product.published_at | date: '%B %d,  %Y' }}</span>
 
                 </div>
                 {%- if product.quantity_price_breaks_configured? -%}
