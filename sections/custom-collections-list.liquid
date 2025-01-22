@@ -1,0 +1,15 @@
+<div class="collection-page">
+    <h1>Our collections</h1>
+    <div class="collections-grid">
+        {% for collection in collections %}
+            <div class="collection">
+                <h3>Collections Name: {{ collection.title }}</h3>
+                <a href="{{ collection.url }}">
+                    <img src="{{ collection.image | image_url: width:300 }}" alt="{{ collection.title }}" style="max-width: 100%; border-radius: 5px;">
+                </a>
+                <p>{{ collection.description | truncate: 100 }}</p>
+                <p>Products: {{ collection.products_count }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>

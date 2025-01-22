@@ -1,0 +1,40 @@
+{% comment %}{% if customer %}{% endcomment %}
+{% comment %}<p class="customer">Welcome back, {{ customer.first_name }}!</p>{% endcomment %}
+{% comment %}{% else %}{% endcomment %}
+{% comment %}<p  class="customer">Welcome! Please log in to explore more.</p>{% endcomment %}
+{% comment %}{% endif %}{% endcomment %}
+<span id="current-time"> Loading..</span>
+
+<script>
+    const currentHour = new Date().getHours();
+    let greeting_message= "";
+  if(currentHour >= 0 && currentHour < 12 ) {
+      greeting_message = "Good morning! Start your day with great deals!"
+  }else if (currentHour >= 12 && currentHour < 18 ){
+
+     greeting_message = "Good afternoon! Check out our latest arrivals!"
+    }else {
+      greeting_message = "Good evening! Unwind with our exclusive offers!"
+    }
+    document.getElementById('current-time').textContent = greeting_message;
+</script>
+
+
+
+<div >
+    <p class="message">{{ greeting_message }} </p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 20px 50px">
+{% for product in collections["Featured-Products"].products -%}
+
+    <a href="{{ product.url }}" style="text-decoration: none; color: inherit;  background-color: {% cycle 'lightblue', 'lightgray' %};">
+        <div class="product"
+             style="box-sizing: border-box;box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); border: 2px solid #FFFDF0; padding: 20px; width: 400px; height: 400px; ">
+            <h2 style="font-size: 0.9em">{{ product.title }}</h2>
+            {{ product.featured_image | img_url: '250x250' | img_tag }}
+            <p>Price: {{ product.price | money_with_currency }}</p>
+        </div>
+    </a>
+{% endfor %}
+</div>
+

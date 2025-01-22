@@ -99,5 +99,23 @@
         {%- endif -%}
       </li>
     {%- endfor -%}
+      <li>
+          <div class="header-search" style="margin-left: auto; display: flex">
+                 <p style="width: 2rem"> {{- 'icon-search.svg' | inline_asset_content -}}</p>
+              <form method="get" action="/search" style="display: flex; align-items: center;">
+                  <input
+                          type="text"
+                          name="q"
+                          placeholder="Search anything..."
+                          style="padding: 5px; font-size: 1em; border: 1px solid #ccc; border-radius: 5px;"
+                          required
+                  />
+                  <input type="hidden" name="type" value="product">
+              </form>
+          </div>
+
+      </li>
   </ul>
 </nav>
+
+
