@@ -11,3 +11,12 @@
         </a>
     {% endfor %}
 </div>
+
+  <ul>
+{%- for collection in collections -%}
+
+      <a href={{ collection.url }}>
+    <li> {{ collection.title }} </li>
+      </a>
+{%- endfor -%}
+  </ul>
