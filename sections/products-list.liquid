@@ -1,8 +1,29 @@
-{% if customer %}
-<p class="customer">Welcome back, {{ customer.first_name }}!</p>
-{% else %}
-<p  class="customer">Welcome! Please log in to explore more.</p>
-{% endif %}
+{% comment %}{% if customer %}{% endcomment %}
+{% comment %}<p class="customer">Welcome back, {{ customer.first_name }}!</p>{% endcomment %}
+{% comment %}{% else %}{% endcomment %}
+{% comment %}<p  class="customer">Welcome! Please log in to explore more.</p>{% endcomment %}
+{% comment %}{% endif %}{% endcomment %}
+<span id="current-time"> Loading..</span>
+
+<script>
+    const currentHour = new Date().getHours();
+    let greeting_message= "";
+  if(currentHour >= 0 && currentHour < 12 ) {
+      greeting_message = "Good morning! Start your day with great deals!"
+  }else if (currentHour >= 12 && currentHour < 18 ){
+
+     greeting_message = "Good afternoon! Check out our latest arrivals!"
+    }else {
+      greeting_message = "Good evening! Unwind with our exclusive offers!"
+    }
+    document.getElementById('current-time').textContent = greeting_message;
+</script>
+
+
+
+<div >
+    <p class="message">{{ greeting_message }} </p>
+</div>
 <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 20px 50px">
 {% for product in collections["Featured-Products"].products -%}
 
