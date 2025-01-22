@@ -196,6 +196,10 @@
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
                     {{ product.description }}
                   </div>
+                    {% else %}
+                    <div style="color: dimgray">
+                        <p>Description coming soon!</p>
+                    </div>
                 {%- endif -%}
               {%- when 'sku' -%}
                 <p
@@ -371,12 +375,9 @@
                     {%- endif -%}
                   </div>
                   <div class="quantity__rules caption" id="Quantity-Rules-{{ section.id }}">
-                    {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
-                      <span class="divider">
-                        {{-
-                          'products.product.quantity.multiples_of'
-                          | t: quantity: product.selected_or_first_available_variant.quantity_rule.increment
-                        -}}
+                    {%- if product.variants.first.inventory_quantity<= 5 -%}
+                      <span class="divider" style="color: red; font-size: medium">
+                        Limited Stock Available!
                       </span>
                     {%- endif -%}
                     {%- if product.selected_or_first_available_variant.quantity_rule.min > 1 -%}
