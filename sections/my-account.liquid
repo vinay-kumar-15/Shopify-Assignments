@@ -1,0 +1,15 @@
+{% if customer %}
+    <div class="my-account">
+        <h1>Welcome, {{ customer.first_name }}!</h1>
+        <p>You have {{ customer.orders_count }} orders in your history.</p>
+
+        <p> Start shopping <a href="/" style="color: blue;">here</a>.</p>
+
+    </div>
+{% else %}
+    <div class="login-prompt">
+        <h1>Welcome to My Account</h1>
+        {% comment %}<p>Please <a href="/account/login" style="color: blue;">log in</a> to access your account details.</p>{% endcomment %}
+       <p>Please {{ 'Log in' | customer_login_link }} to access your account details.</p>
+    </div>
+{% endif %}
