@@ -1,5 +1,5 @@
 <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 20px 50px">
-    {% for product in collections["Featured-Products"].products -%}
+    {% for product in collections["Featured-Products"].products limit: 3-%}
 
         <a href="{{ product.url }}" style="text-decoration: none; color: inherit;  background-color: {% cycle 'lightblue', 'lightgray' %};">
             <div class="product"
